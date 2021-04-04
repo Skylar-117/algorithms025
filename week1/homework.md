@@ -90,7 +90,7 @@ Q&A：
 （1）”move = start” 能不能写成 “move = ListNode(0, None)”？  
     不能。这段代码的意思是 move 和 start 两个指针**同时**指向了同一个节点 ListNode(0, None)——而这个 dummy 节点的作用，是为了指向我们**即将要创建的新链表（即题目的要求）**的首节点。  
 （2）接下来的语句中，move 有所移动，那 start 会也跟着 move 的移动而移动吗？  
-    - 不会。“move = start” 是属于赋值引用，Python的变量只不过是对于一块指定内存地址的引用，也即对对象的引用，读取对象所存储的信息（比如整数值18）。（就简单理解成这里的 “对象” == “内存地址”）  
+    不会。“move = start” 是属于赋值引用，Python的变量只不过是对于一块指定内存地址的引用，也即对对象的引用，读取对象所存储的信息（比如整数值18）。（就简单理解成这里的 “对象” == “内存地址”）  
 知识点：  
 Python中，万物皆对象。Python中不存在 “传值调用”，一切传递的都是对象（或理解为内存地址）的引用，而这些引用说白了就是指向视例的指针，故Python里全都是指针，只不过你看不出来而已。  
 [Python变量的理解与内存管理](https://blog.csdn.net/baidu_35812706/article/details/82021400?utm_medium=distribute.pc_relevant_bbs_down.none-task--2~all~first_rank_v2~rank_v29-9.nonecase&depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task--2~all~first_rank_v2~rank_v29-9.nonecase)   
