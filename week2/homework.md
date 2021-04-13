@@ -111,6 +111,7 @@ Python常用函数：
         当iterable只是一个字符串时，返回的是 a list of individual characters of that string，比如sorted(“machine”)返回的是 ['a', 'c', 'e', 'h', 'i', 'm', 'n']。[需要注意的几点](https://realpython.com/python-sort/)：The original variable is unchanged because sorted() provides sorted output and does not change the original value in place；Lists With Non-Comparable Data Types Can’t Be sorted()
 
 ==========
+
 作业题 - 二叉树的中序遍历 (LC94 - medium)
 ```python
 # method I: recursive
