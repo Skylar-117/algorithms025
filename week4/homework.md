@@ -113,3 +113,49 @@ class Solution:
 【技巧】只要 “排过序的、有上下界的、可通过索引访问元素的” 就往二分查找上想！  
 
 ==========
+
+作业题 - 分发饼干 (LC455 - easy)
+```python
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        g = sorted(g)
+        s = sorted(s)
+        num_content = 0
+        i, j = len(g) - 1, len(s) - 1
+        while (i >= 0 and j >= 0):
+            if (s[j] >= g[i]):
+                num_content += 1
+                i -= 1
+                j -= 1
+            else:
+                i -= 1
+        return num_content
+```
+【思路】先排序再贪心，双指针  
+【详解】反着想会更好理解，先满足胃口大的孩子。  
+1. 首先，对孩子胃口数组和饼干数组进行排序。  
+2. 然后，设两个指针 i/j 分别指向两个数组的尾部，从后往前移动。  
+    - 若 s[j] >= g[i]，则把当前饼干 s[j] 给孩子 g[i]，之后 i/j 都往前移动一位；  
+    - 若 s[j] < g[i]，则当前饼干 s[j] 不够大不能满足孩子 g[i]，则 i 往前移动一位，看下一个孩子 g[i-1] 是否被饼干 s[j] 喂饱。  
+**Strategy**: give away the largest cookie to the child with the largest greed factor, i.e. the largest cookie should then go to the greediest child. If the largest cookie can't appease the child, then give away that cookie to the next greediest child.  
+**Reason**: it makes sure that the most amount of children are happy.  
+**What does this tell us?**  
+    We want to greedily know what the largest cookie size is that we haven't given it away AND we also want to know the greediest child that hasn't gotten the cookie yet. Because of this, we definitely want to sort two arrays. Then use 2 pointers, one points to the largest cookie, the other one points to the greediest child, and make comparison: if the cookie is big enough to appease the child, then give that cookie to the child, and move the cookie pointer down to the 2nd largest cookie, and move the child pointer down to the 2nd greediest child; if not, then move child pointer to the 2nd greediest child but keep the cookie pointer as is.  
+
+==========
+
+作业题 - 买卖股票的最佳时机 II (LC122 - easy)
+```python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profits = 0
+        for i in range(1, len(prices)):
+            tmp = prices[i] - prices[i - 1]
+            if (tmp > 0):
+                profits += tmp
+        return profits
+```
+【思路】贪心，动态规划  
+核心就是，只要后一天比前一天高，则就前一天买入后一天卖出，且每天都执行买卖；即使是连续上涨，即数组单调递增，最大收益出现在 p[n] - p[0]，也等价于每天买卖即 p[n] - p[0] = (p[1] - p[0]) + (p[2] - p[1]) + … + (p[n] - p[n-1])。  
+
+==========
