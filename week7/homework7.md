@@ -23,9 +23,9 @@ class Solution:
 【思路】回溯（backtracking）   
 【复杂度】时间：O(4^n/sqrt(n))；空间：O(n) - 因为res
 只在序列仍然保持有效时才添加 '(' or ')'，我们可以通过跟踪到目前为止放置的左括号和右括号的数目来做到这一点：  
-# valid if # of open paranthesis == # of close paranthesis == n  
-# (1) only add ( if # of open paranthesis < n  
-# (2) only add ) if # of close paranthesis < open paranthesis AND # of close paranthesis < n  
+    valid if # of open paranthesis == # of close paranthesis == n  
+    (1) only add ( if # of open paranthesis < n  
+    (2) only add ) if # of close paranthesis < open paranthesis AND # of close paranthesis < n  
 其实这里的(1)和(2)算是状态树剪枝了   
 
 ==========
