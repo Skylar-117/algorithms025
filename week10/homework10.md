@@ -35,3 +35,24 @@ class Solution:
 
 ==========  
 
+作业题 - 反转字符串 II (LC541 - easy)
+```python
+class Solution:
+    def reverseStr(self, s: str, k: int) -> str:
+        # O(N/2k) ≈ O(N)
+        res = ""
+        for i in range(0, len(s), 2 * k):
+            reverse_str = s[i:i + k]
+            tmp_str = reverse_str[::-1] + s[i + k:i + 2 * k]
+            res += tmp_str
+        return res
+```
+【思路】字符串切片 slice  
+【详解】  
+本题核心：每间隔 2k 个索引长度，反转前 k 个字符。  
+剩余字符长度0≤lengh<2k，将其再分为两部分：  
+    - 若 0≤lengh<k，还不够满足 “前k个字符”，因此剩余字符全部反转；  
+    - 若 k≤lengh<2k，“前k个字符” 是 “完整” 的，直接反转即可。  
+
+==========  
+
